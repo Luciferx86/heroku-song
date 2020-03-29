@@ -1,0 +1,37 @@
+{
+  "allSongs": [
+    {
+      "id": 1,
+      "songName": "This is a Song Name",
+      "releaseDate": "27/03/1997",
+      "imageURL": "",
+      "ratings": [
+        5,
+        0.3
+      ]
+    },
+    {
+      "id": 2,
+      "songName": "This is a Song Name",
+      "releaseDate": "27/03/1997",
+      "imageURL": "",
+      "ratings": []
+    },
+    {
+      "id": 3,
+      "songName": "This is a Song Name",
+      "releaseDate": "27/03/1997",
+      "imageURL": "",
+      "ratings": []
+    },
+    {
+      "id": 4,
+      "songName": "Akshay Boii",
+      "releaseDate": "10/10/1010",
+      "imageURL": "",
+      "ratings": [
+        3
+      ]
+    }
+  ]
+}
