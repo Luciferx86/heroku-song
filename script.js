@@ -178,6 +178,7 @@ app.delete('/api/songs/:id', (req, res) => {
         if(allSongs[i].id == id){
             deletedElement = allSongs[i];
             allSongs.splice(i, 1);
+            break;
         }
     }
 
@@ -192,6 +193,37 @@ app.delete('/api/songs/:id', (req, res) => {
     }
     res.send(deletedElement || "Invalid ID");
 });
+
+app.delete('/api/artists/:id', (req, res) => {
+
+    const id = req.params.id;
+    var allArtiststring = fs.readFileSync('./artists/allArtists.json');
+    const parsedJson = JSON.parse(allArtiststring);
+
+    var allArtists = parsedJson.allArtists;
+    var deletedElement;
+
+    for(var i = 0;i<allArtists.length;i++){
+        if(allArtists[i].id == id){
+            deletedElement = allArtists[i];
+            allArtists.splice(i, 1);
+            break;
+        }
+    }
+
+    const finalObj = {
+        allArtists: allArtists
+    }
+    const stringToWrite = JSON.stringify(finalObj, null, 2);
+    try {
+        fs.writeFileSync('./artists/allArtists.json', stringToWrite);
+    } catch (err) {
+        console.log(err);
+    }
+    res.send(deletedElement || "Invalid ID");
+});
+
+
 //Validate Information
 function validateSong(song) {
     const schema = {
