@@ -16,7 +16,7 @@ app.use(express.json()); //used the json file
 //Read Request Handlers
 // Display the Message when the URL consist of '/'
 app.get('/', (req, res) => {
-    res.send('Welcome to Edurekas REST API!');
+    res.send("Welcome to Akshay's REST API!");
 });
 // Display the List Of Customers when URL consists of api customers
 app.get('/api/songs', (req, res) => {
