@@ -262,7 +262,7 @@ function validateArtist(artist) {
     const schema = {
         artistName: Joi.string().min(3).required(),
         artistDOB: Joi.string().min(3).required(),
-        bio: Joi.string().empty().required().valid('')
+        bio: Joi.string().min(3).required()
     };
     return Joi.validate(artist, schema);
 
