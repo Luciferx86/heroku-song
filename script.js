@@ -173,12 +173,19 @@ app.delete('/api/songs/:id', (req, res) => {
 
     var allSongs = parsedJson.allSongs;
     var deletedElement;
+    var deletedIndex;
 
-    for(var i = 0;i<allSongs.length;i++){
-        if(allSongs[i].id == id){
+    for (var i = 0; i < allSongs.length; i++) {
+        if (allSongs[i].id == id) {
+            deletedIndex = i;
             deletedElement = allSongs[i];
             allSongs.splice(i, 1);
             break;
+        }
+    }
+    if (deletedIndex) {
+        for (var i = deletedIndex; i < allSongs.length; i++) {
+            allSongs[i].id = allSongs[i].id - 1;
         }
     }
 
@@ -197,17 +204,25 @@ app.delete('/api/songs/:id', (req, res) => {
 app.delete('/api/artists/:id', (req, res) => {
 
     const id = req.params.id;
-    var allArtiststring = fs.readFileSync('./artists/allArtists.json');
-    const parsedJson = JSON.parse(allArtiststring);
+    var allArtistString = fs.readFileSync('./artists/allArtists.json');
+    const parsedJson = JSON.parse(allArtistString);
 
     var allArtists = parsedJson.allArtists;
     var deletedElement;
+    var deletedIndex;
 
-    for(var i = 0;i<allArtists.length;i++){
-        if(allArtists[i].id == id){
+    for (var i = 0; i < allArtists.length; i++) {
+        if (allArtists[i].id == id) {
+            deletedIndex = i;
             deletedElement = allArtists[i];
             allArtists.splice(i, 1);
             break;
+        }
+    }
+
+    if (deletedIndex) {
+        for (var i = deletedIndex; i < allArtists.length; i++) {
+            allArtists[i].id = allArtists[i].id - 1;
         }
     }
 
