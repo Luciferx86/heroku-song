@@ -167,13 +167,30 @@ app.post('/api/artists', (req, res) => {
 // Delete Customer Details
 app.delete('/api/songs/:id', (req, res) => {
 
-    const song = allSongs.find(c => c.id === parseInt(req.params.id));
-    if (!song) res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;"> Not Found!! </h2>');
+    const id = req.params.id;
+    var allSongsString = fs.readFileSync('./songs/allSongs.json');
+    const parsedJson = JSON.parse(allSongsString);
 
-    const index = allSongs.indexOf(song);
-    allSongs.splice(index, 1);
+    var allSongs = parsedJson.allSongs;
+    var deletedElement;
 
-    res.send(song);
+    for(var i = 0;i<allSongs.length;i++){
+        if(allSongs[i].id == id){
+            deletedElement = allSongs[i];
+            allSongs.splice(i, 1);
+        }
+    }
+
+    const finalObj = {
+        allSongs: allSongs
+    }
+    const stringToWrite = JSON.stringify(finalObj, null, 2);
+    try {
+        fs.writeFileSync('./songs/allSongs.json', stringToWrite);
+    } catch (err) {
+        console.log(err);
+    }
+    res.send(deletedElement || "Invalid ID");
 });
 //Validate Information
 function validateSong(song) {
