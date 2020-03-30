@@ -2,21 +2,39 @@
   "allArtists": [
     {
       "id": 1,
-      "artistName": "Arman Malik",
-      "artistDOB": "27/03/1997",
-      "bio": ""
+      "artistName": "The Weekend",
+      "artistDOB": "16/02/1990",
+      "bio": "",
+      "sungSongs": [
+        "Blinding Lights"
+      ]
     },
     {
       "id": 2,
       "artistName": "Marshal Mathers",
-      "artistDOB": "27/03/1997",
-      "bio": ""
+      "artistDOB": "17/10/1992",
+      "bio": "",
+      "sungSongs": [
+        "Kamikaze"
+      ]
     },
     {
       "id": 3,
       "artistName": "Drake",
-      "artistDOB": "27/03/1997",
-      "bio": ""
+      "artistDOB": "24/10/1986",
+      "bio": "",
+      "sungSongs": [
+        "God's Plan"
+      ]
+    },
+    {
+      "id": 4,
+      "artistName": "Sidhu Moosewala",
+      "artistDOB": "11/06/1993",
+      "bio": "",
+      "sungSongs": [
+        "Old Skool"
+      ]
     }
   ]
 }

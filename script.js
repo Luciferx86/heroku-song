@@ -26,6 +26,15 @@ app.get('/api/songs', (req, res) => {
     res.send(parsedJson.allSongs);
 });
 
+
+app.get('/api/songsFromArtist', (req, res) => {
+    const artist = req.get("artistName");
+    console.log("Artist Name : " + artist);
+    const sungSongs = getSungSongs(artist);
+    res.send(sungSongs);
+});
+
+
 app.get('/api/artists', (req, res) => {
     var jsonString = fs.readFileSync('./artists/allArtists.json');
     const parsedJson = JSON.parse(jsonString);
@@ -53,24 +62,53 @@ app.post('/api/songs', (req, res) => {
 
 
     var allSongsString = fs.readFileSync('./songs/allSongs.json');
-    const parsedJson = JSON.parse(allSongsString);
-
-    const allSongs = parsedJson.allSongs;
+    const parsedJsonSong = JSON.parse(allSongsString);
+    const allSongs = parsedJsonSong.allSongs;
     const song = {
         id: allSongs.length + 1,
         songName: req.body.songName,
         releaseDate: req.body.releaseDate,
         imageURL: req.body.imageURL,
-        ratings: []
+        ratings: [],
+        artists: req.body.artists
     };
     allSongs.push(song)
 
-    const finalObj = {
+    
+    const finalObjSong = {
         allSongs: allSongs
     }
-    const stringToWrite = JSON.stringify(finalObj, null, 2);
+    const stringToWriteSong = JSON.stringify(finalObjSong, null, 2);
     try {
-        fs.writeFileSync('./songs/allSongs.json', stringToWrite);
+        fs.writeFileSync('./songs/allSongs.json', stringToWriteSong);
+    } catch (err) {
+        console.log(err);
+    }
+
+    //now adding song to artist sungSongs
+    var allArtistsString = fs.readFileSync('./artists/allArtists.json');
+    const parsedJsonArtists = JSON.parse(allArtistsString);
+    const allArtists = parsedJsonArtists.allArtists;
+
+    const artistsInSong = req.body.artists;
+    for(var i = 0;i<allArtists.length;i++){
+        for(var j = 0;j<artistsInSong.length;j++){
+            console.log(allArtists[i]);
+            console.log(allArtists.length)
+            console.log(i);
+            if(allArtists[i].artistName == artistsInSong[j]){
+                allArtists[i].sungSongs.push(song.songName);
+            }
+        }
+    }
+
+    const finalObjArtist = {
+        allArtists: allArtists
+    }
+    const stringToWriteArtist = JSON.stringify(finalObjArtist, null, 2);
+
+    try {
+        fs.writeFileSync('./artists/allArtists.json', stringToWriteArtist);
     } catch (err) {
         console.log(err);
     }
@@ -244,7 +282,8 @@ function validateSong(song) {
     const schema = {
         songName: Joi.string().min(3).required(),
         releaseDate: Joi.string().min(3).required(),
-        imageURL: Joi.string().empty().optional().valid('')
+        imageURL: Joi.string().empty().optional().valid(''),
+        artists: Joi.array().required().min(1)
     };
     return Joi.validate(song, schema);
 
@@ -266,6 +305,23 @@ function validateArtist(artist) {
     };
     return Joi.validate(artist, schema);
 
+}
+
+function getSungSongs(artist){
+    console.log("ArtistName : " + artist);
+    var sungSongs = []
+    var jsonString = fs.readFileSync('./songs/allSongs.json');
+    const parsedJson = JSON.parse(jsonString);
+    console.log(parsedJson.allSongs);
+    const allSongs = parsedJson.allSongs;
+    for(var i = 0;i<allSongs.length;i++){
+        // console.log(allSongs[i]);
+        // console.log(allSongs[i].artists);
+        if(allSongs[i].artists.includes(artist)){
+            sungSongs.push(allSongs[i].songName);
+        }
+    }
+    return sungSongs;
 }
 
 //PORT ENVIRONMENT VARIABLE
