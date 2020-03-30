@@ -1,12 +1,10 @@
 {
-    "allUers": {
-        [
-            {
-                "id": 1,
-                "name": "Akshay Arora",
-                "email": "akshayarora.10.6.97@gmail.com",
-                "password": "password"
-            }
-        ]
-    }
+    "allUers": [
+        {
+            "id": 1,
+            "name": "Akshay Arora",
+            "email": "akshayarora.10.6.97@gmail.com",
+            "password": "password"
+        }
+    ]
 }
