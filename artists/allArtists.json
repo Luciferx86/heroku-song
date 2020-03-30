@@ -8,26 +8,14 @@
     },
     {
       "id": 2,
-      "artistName": "Sonu Nigam",
-      "artistDOB": "27/03/1997",
-      "bio": ""
-    },
-    {
-      "id": 3,
       "artistName": "Marshal Mathers",
       "artistDOB": "27/03/1997",
       "bio": ""
     },
     {
-      "id": 4,
+      "id": 3,
       "artistName": "Drake",
       "artistDOB": "27/03/1997",
-      "bio": ""
-    },
-    {
-      "id": 5,
-      "artistName": "Akshay Boii",
-      "artistDOB": "10/10/1010",
       "bio": ""
     }
   ]
