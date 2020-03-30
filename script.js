@@ -110,7 +110,7 @@ app.post('/api/songs/rate', (req, res) => {
     } catch (err) {
         console.log(err);
     }
-    res.send({ songId, rating });
+    res.send({ id:songId, rating });
 });
 
 app.post('/api/artists', (req, res) => {
