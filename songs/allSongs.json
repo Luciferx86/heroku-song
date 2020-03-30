@@ -2,7 +2,7 @@
   "allSongs": [
     {
       "id": 1,
-      "songName": "This is a Song Name",
+      "songName": "Blinding Lights",
       "releaseDate": "27/03/1997",
       "imageURL": "",
       "ratings": [
@@ -11,21 +11,21 @@
     },
     {
       "id": 2,
-      "songName": "This is a Song Name",
+      "songName": "Sahiba ",
       "releaseDate": "27/03/1997",
       "imageURL": "",
       "ratings": []
     },
     {
       "id": 3,
-      "songName": "This is a Song Name",
+      "songName": "Old Skool",
       "releaseDate": "27/03/1997",
       "imageURL": "",
       "ratings": []
     },
     {
       "id": 4,
-      "songName": "Akshay Boii",
+      "songName": "Kamikaze",
       "releaseDate": "10/10/1010",
       "imageURL": "",
       "ratings": [
