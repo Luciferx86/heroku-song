@@ -340,7 +340,7 @@ function getAverageRating(ratings) {
     for (var i = 0; i < ratings.length; i++) {
         avgRating += ratings[i];
     }
-    return avgRating / ratings.length;
+    return (avgRating / ratings.length).toFixed(1);
 }
 
 //PORT ENVIRONMENT VARIABLE
