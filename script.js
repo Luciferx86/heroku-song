@@ -23,7 +23,15 @@ app.get('/api/songs', (req, res) => {
     var jsonString = fs.readFileSync('./songs/allSongs.json');
     const parsedJson = JSON.parse(jsonString);
     console.log(parsedJson.allSongs);
-    res.send(parsedJson.allSongs);
+    var allSongs = parsedJson.allSongs;
+    for(var i = 0;i<allSongs.length;i++){
+        var allRatings = allSongs[i].ratings;
+        console.log("AllRatings:"+allRatings);
+        delete allSongs[i].ratings;
+        allSongs[i].avgRating = getAverageRating(allRatings) || 0;
+        console.log("AvgRating:"+getAverageRating(allRatings));
+    }
+    res.send(allSongs);
 });
 
 
@@ -93,9 +101,6 @@ app.post('/api/songs', (req, res) => {
     const artistsInSong = req.body.artists;
     for(var i = 0;i<allArtists.length;i++){
         for(var j = 0;j<artistsInSong.length;j++){
-            console.log(allArtists[i]);
-            console.log(allArtists.length)
-            console.log(i);
             if(allArtists[i].artistName == artistsInSong[j]){
                 allArtists[i].sungSongs.push(song.songName);
             }
@@ -322,6 +327,14 @@ function getSungSongs(artist){
         }
     }
     return sungSongs;
+}
+
+function getAverageRating(ratings){
+    var avgRating = 0;
+    for(var i = 0;i<ratings.length;i++){
+        avgRating+=ratings[i];
+    }
+    return avgRating/ratings.length;
 }
 
 //PORT ENVIRONMENT VARIABLE
