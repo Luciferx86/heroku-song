@@ -5,7 +5,12 @@
       "songName": "Blinding Lights",
       "releaseDate": "29/11/2019",
       "imageURL": "",
-      "ratings": [5,4.5,3.5,5],
+      "ratings": [
+        5,
+        4.5,
+        3.5,
+        5
+      ],
       "artists": [
         "The Weekend"
       ]
@@ -15,7 +20,13 @@
       "songName": "God's Plan",
       "releaseDate": "19/01/2018",
       "imageURL": "",
-      "ratings": [4,4,3.5,3,5],
+      "ratings": [
+        4,
+        4,
+        3.5,
+        3,
+        5
+      ],
       "artists": [
         "Drake"
       ]
@@ -25,7 +36,13 @@
       "songName": "Old Skool",
       "releaseDate": "27/03/2020",
       "imageURL": "",
-      "ratings": [5,4,5,3,2.5],
+      "ratings": [
+        5,
+        4,
+        5,
+        3,
+        2.5
+      ],
       "artists": [
         "Sidhu Moosewala"
       ]
@@ -35,7 +52,12 @@
       "songName": "Kamikaze",
       "releaseDate": "31/08/2018",
       "imageURL": "",
-      "ratings": [3,3,4,4],
+      "ratings": [
+        3,
+        3,
+        4,
+        4
+      ],
       "artists": [
         "Marshal Mathers"
       ]
