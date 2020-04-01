@@ -180,7 +180,8 @@ app.post('/api/artists', (req, res) => {
         id: allArtists.length + 1,
         artistName: req.body.artistName,
         artistDOB: req.body.artistDOB,
-        bio: req.body.bio
+        bio: req.body.bio,
+        sungSongs:[]
     };
     allArtists.push(artist)
 
