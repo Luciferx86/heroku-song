@@ -9,7 +9,7 @@
   "author": "Akshay",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "joi": "^14.3.1"
   }
 }
